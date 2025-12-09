@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { getServerData } from '../Helper/Helper'
 import { useNavigate } from 'react-router-dom'
 
-export default function ResultTable() {
+export default function ResultTable({ currentResult }) {
     const navigate = useNavigate();
     const [data, setData] = useState([])
 
     useEffect(() => {
-        getServerData(`${process.env.REACT_APP_SERVER_HOSTNAME}/api/result`, (res) => {
-            setData(res)
-        })
-    })
+        if (currentResult) {
+            setData([currentResult])
+        } else {
+            getServerData(`${process.env.REACT_APP_SERVER_HOSTNAME}/api/result`, (res) => {
+                setData(res)
+            })
+        }
+    }, [currentResult])
 
     return (
         <div>

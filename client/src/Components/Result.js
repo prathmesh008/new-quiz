@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import '../Styles/Result.css'
-import Resulttable from './Resulttable';
+
 import { attempts, earnpoints, flagresult } from '../Helper/Helper.js';
 import { Link, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,7 +38,7 @@ function Result() {
     }
     return (
         <div className='container'>
-            <h1 className='title text-light'>Quiz Application</h1>
+            <h1 className='title text-light' style={{ textAlign: 'center' }}>Quiz Application</h1>
 
             <div className='result flex-center'>
                 <div className='flex'>
@@ -65,15 +65,19 @@ function Result() {
                     <span>Quiz Result</span>
                     <span style={{ color: `${flag ? "#2aff95" : "#ff2a66"}` }} className='bold'>{flag ? "Passed" : "Failed"}</span>
                 </div>
-            </div>
-
-            <div className="start">
-                <Link className='btn' to={'/'} onClick={onrestart}>Restart</Link>
-            </div>
-
-            <div className="container">
-                {/* result table */}
-                <Resulttable></Resulttable>
+                <div className="start">
+                    <Link className='btn' to={'/'} onClick={onrestart}>Restart</Link>
+                    <Link className='btn' to={'/result-details'} state={{
+                        result: {
+                            username: userid,
+                            attempts: attempt,
+                            points: earnpoint,
+                            acheived: flag ? "Passed" : "Failed",
+                            result,
+                            quizId
+                        }
+                    }}>Result Details</Link>
+                </div>
             </div>
         </div>
     )

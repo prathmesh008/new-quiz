@@ -82,3 +82,45 @@ table {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
 }
+
+/* Button Container Styles */
+.start {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.start .btn {
+    padding: 15px 30px;
+    border-radius: 50px;
+    /* Rounded pill shape looks modern */
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+}
+
+/* Restart Button - Yellow/Warning */
+.start .btn:first-child {
+    background-color: var(--warning-color);
+    color: #fff;
+}
+
+/* Result Details Button - Primary Blue */
+.start .btn:last-child {
+    background-color: var(--accent-color);
+}
+
+.start .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
